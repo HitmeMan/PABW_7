@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dasboardA', function () {
-    return view('admin-page');
-});
-
-Route::get('/dasboardB', function () {
-    return view('mitra-page');
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::middleware(['auth', 'user-akses:user'])->group(function(){
+    Route::get('/user', [HomeController::class, 'userIndex'])->name('home.user');
+});
+
+Route::middleware(['auth', 'user-akses:mitra'])->group(function(){
+    Route::get('/mitra', [HomeController::class, 'mitraIndex'])->name('home.mitra');
+});
+
+Route::middleware(['auth', 'user-akses:admin'])->group(function(){
+    Route::get('/admin', [HomeController::class, 'adminIndex'])->name('home.admin');
+
+});

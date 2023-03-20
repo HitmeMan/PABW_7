@@ -25,4 +25,19 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function adminIndex()
+    {
+        return view('admin-page');
+    }
+
+    public function mitraIndex()
+    {
+        return view('mitra-page');
+    }
+
+    public function userIndex()
+    {
+        return view('user-page');
+    }
 }

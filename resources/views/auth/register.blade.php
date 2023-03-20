@@ -15,9 +15,25 @@
                             <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" username="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                 @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('role') }}</label>
+
+                            <div class="col-md-6">
+                            <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
+                                    <option value="user">User Biasa</option>
+                                    <option value="mitra">Pemilik Mitra</option>
+                                </select>
+
+                                @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -29,7 +45,7 @@
                             <label for="no-hp" class="col-md-4 col-form-label text-md-end">{{ __('no-hp') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no-hp" type="number" class="form-control @error('no-hp') is-invalid @enderror" no-hp="no-hp" value="{{ old('no-hp') }}" required autocomplete="no-hp" autofocus>
+                                <input id="no-hp" type="text" class="form-control @error('no-hp') is-invalid @enderror" name="no-hp" value="{{ old('no-hp') }}" required autocomplete="no-hp" autofocus>
 
                                 @error('no-hp')
                                     <span class="invalid-feedback" role="alert">
@@ -39,12 +55,13 @@
                             </div>
                         </div>
 
+                        
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" username="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +75,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" username="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
